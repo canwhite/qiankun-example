@@ -26,6 +26,7 @@ const apps = microApps.map(item => {
   }
 })
 
+//注册app和挂载app的生命周期
 registerMicroApps(apps, {
   beforeLoad: app => {
     console.log('before load app.name====>>>>>', app.name)
@@ -45,6 +46,7 @@ registerMicroApps(apps, {
       console.log('[LifeCycle] after unmount %c%s', 'color: green;', app.name)
     }
   ]
-})
+}) 
+
 setDefaultMountApp('/sub-vue')
 start()

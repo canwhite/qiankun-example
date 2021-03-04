@@ -13,7 +13,7 @@ module.exports = {
     }
   },
   devServer: {
-    port: process.env.VUE_APP_PORT,
+    port: process.env.VUE_APP_PORT,//与父应用配置一致
     headers: {
       'Access-Control-Allow-Origin': '*'
     }
