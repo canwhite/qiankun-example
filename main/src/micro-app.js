@@ -16,6 +16,7 @@ const microApps = [
   }
 ]
 
+//单个app注册信息里还可以挂载容器和props属性
 const apps = microApps.map(item => {
   return {
     ...item,

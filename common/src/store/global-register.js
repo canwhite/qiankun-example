@@ -21,27 +21,13 @@ function registerGlobalModule (store, props = {}) {
   // 0.如果没有名为global的module,创建
 
   if (!store.hasModule('global')) {
+
+
     const globalModule = {
       namespaced: true,
       state: initState,
       actions: {
         //2.同时提供了setGlobalState方法供外部调用，内部自动通知同步到父应用。
-        //调用方法如下
-        // export default {
-        //   computed: {
-        //     ...mapState('global', {
-        //       user: state => state.user, // 获取父应用的user信息
-        //     }),
-        //   },
-        //   methods: {
-        //     //从某个module拿到方法
-        //     ...mapActions('global', ['setGlobalState']),
-        //     update () {
-        //       this.setGlobalState('user', { name: '张三' })
-        //     }
-        //   },
-        // };
-        
 
         setGlobalState ({ commit }, payload) {
           commit('setGlobalState', payload);
@@ -59,7 +45,7 @@ function registerGlobalModule (store, props = {}) {
           // eslint-disable-next-line
           state = Object.assign(state, payload);
         },
-        // 通知父应用
+        // 通知父应用，props是父类下发的
         emitGlobalState (state) {
           if (props.setGlobalState) {
             props.setGlobalState(state);
@@ -67,7 +53,7 @@ function registerGlobalModule (store, props = {}) {
         },
       },
     };
-    
+    //PS：注意，只是创建但是没有执行
     store.registerModule('global', globalModule);
   } else {
     // 3.如果已经有了global。每次mount时，都同步一次父应用数据

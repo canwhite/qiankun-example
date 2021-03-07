@@ -26,7 +26,8 @@ const apps = microApps.map(item => {
   }
 })
 
-//注册app和挂载app的生命周期
+//  --注册app和挂载app的生命周期,这个注册方法应该是一个关键方法
+//  --和webpack打包以及往子项目上挂载数据有关
 registerMicroApps(apps, {
   beforeLoad: app => {
     console.log('before load app.name====>>>>>', app.name)

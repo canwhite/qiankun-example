@@ -2,6 +2,7 @@ const { name } = require('../package.json')
 
 module.exports = {
   publicPath: '/subapp/sub-vue',
+  //由于common是不经过babel和pollfy的，所以引用者需要在webpack打包时显性指定该模块需要编译
   transpileDependencies: ['common'],
   chainWebpack: config => config.resolve.symlinks(false),
   configureWebpack: {
